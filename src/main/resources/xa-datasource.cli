@@ -1,6 +1,10 @@
 # run with jboss-cli.sh -c --file=xa-datasource.cli
+/subsystem=datasources/xa-data-source=PGDS:remove
+
 xa-data-source add --jndi-name=java:jboss/datasources/PGDS --name=PGDS --driver-name=postgresql --xa-datasource-class=org.postgresql.xa.PGXADataSource --min-pool-size=10 --max-pool-size=10 --pool-prefill=true --share-prepared-statements=true --prepared-statements-cache-size=64 --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter
 
-/subsystem=datasources/xa-data-source=PGDS/xa-datasource-properties=URL:add(value="jdbc:postgresql://192.168.56.3:5432/test")
+/subsystem=datasources/xa-data-source=PGDS/xa-datasource-properties=ServerName:add(value="192.168.56.3")
+/subsystem=datasources/xa-data-source=PGDS/xa-datasource-properties=PortNumber:add(value="5432")
+/subsystem=datasources/xa-data-source=PGDS/xa-datasource-properties=DatabaseName:add(value="test")
 /subsystem=datasources/xa-data-source=PGDS/xa-datasource-properties=User:add(value="test")
 /subsystem=datasources/xa-data-source=PGDS/xa-datasource-properties=Password:add(value="test")
