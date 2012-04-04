@@ -1,0 +1,10 @@
+PostgreSQL JDBC driver module for use in JBoss AS7
+==================================================
+
+[1] mvn clean package
+[2] unzip target/postgresql-as7-module.zip ${JBOSS_HOME}/modules
+[3] add src/main/resources/driver.config to standalone.xml (or your preferred config)
+[4] start JBoss
+[5] modify src/main/resources/xa-datasource.cli according to your env
+[6] ${JBOSS_HOME}/bin/jboss-cli.sh -c --file=src/main/resources/xa-datasource.cli [--controller=host:port]
+
